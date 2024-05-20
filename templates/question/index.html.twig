@@ -33,7 +33,10 @@
                                     <div class="d-flex justify-content-end">
                                         <a href="{{ path('questions_show', {'id': question.id}) }}" class="btn btn-sm btn-primary btn-action me-2 fw-semibold">View</a>
                                         <a href="{{ path('questions_edit', {'id': question.id}) }}" class="btn btn-sm btn-warning btn-action me-2 fw-semibold">Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger btn-action fw-semibold">Delete</a>
+                                        <form method="post" action="{{ path('questions_delete', {'id': question.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ question.id) }}">
+                                            <button class="btn btn-sm btn-danger me-2">Delete</button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
