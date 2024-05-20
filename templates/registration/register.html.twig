@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Register</h1>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="p-3 border bg-light fw-semibold text-center">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ullamcorper lacus in sodales iaculis. Maecenas dignissim quis felis id luctus. Aenean maximus posuere augue, ut pellentesque ante tincidunt sit amet. Integer quis quam urna. Suspendisse potenti. Vestibulum eleifend, ligula ut scelerisque posuere, eros nibh varius magna, ultricies vulputate enim dolor id purus. Etiam iaculis libero nec turpis aliquet facilisis at sit amet massa. Sed rutrum lectus eu nisi euismod, et venenatis dui vehicula.
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex align-items-stretch mt-4">
+            <div class="col-12 col-md-6 d-flex text-center mb-4 mb-md-0">
+                <div class="p-3 w-100 bg-light border">
+                    {{ form_start(registrationForm) }}
+                    {{ form_widget(registrationForm) }}
+                    <button type="submit" class="btn btn-primary mt-3">Create Account</button>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+            <div class="col-12 col-md-6 d-flex text-center">
+                <div class="p-3 w-100 bg-light border">
+                    <img src="{{ asset('images/registration-image.png') }}" class="img-fluid" alt="Registration Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

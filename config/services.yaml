@@ -1,0 +1,37 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false       # All services are private by default
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
+        public: true  # Ensure controllers are public
+
+    App\Form\:
+        resource: '../src/Form'
+        public: true  # Ensure forms are public
+
+    App\Security\LoginFormAuthenticator:
+        arguments:
+            $router: '@router'
+
+    App\Repository\UserRepository:
+        tags: [ 'doctrine.repository_service' ]
+
+    App\Security\ApiTokenAuthenticator:
+        arguments:
+            $logger: '@logger'
+
+    App\Service\WeatherService:
+        arguments:
+            $apiKey: '%env(WEATHER_API_KEY)%'

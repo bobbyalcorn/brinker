@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Question{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center mb-4">Edit Question</h1>
+                <form method="post">
+                    <div class="p-3 w-100 bg-light border">
+                        <div class="text-center">
+                            {{ include('question/_form.html.twig', {'button_label': 'Update Question'}) }}
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        {{ include('question/_delete_form.html.twig') }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Dashboard</h1>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="p-3 border bg-light fw-semibold text-center">
+                    Welcome to the Dashboard of the Digital Guest Experience (DGE) Loyalty Management System (LMS). Here, you can manage Questions related to the DGE LMS. Our platform provides advanced tools and features to enhance and streamline the guest experience, making it easier to manage questions associated with loyalty management.
+                </div>
+            </div>
+        </div>
+        <div class="row g-4 d-flex align-items-stretch mt-2">
+            <div class="col-12 col-md-3 d-flex">
+                <div class="border bg-light text-center w-100">
+                    <a class="btn btn-primary w-100" href="{{ path('questions_index') }}">View Questions</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 d-flex">
+                <div class="border bg-light text-center w-100">
+                    <a class="btn btn-primary w-100" href="{{ path('question_new') }}">Create New Question</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 d-flex">
+                <div class="border bg-light text-center w-100">
+                    <a class="btn btn-primary w-100" href="{{ path('api_overview') }}">API Overview</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 d-flex">
+                <div class="border bg-light text-center w-100">
+                    <a class="btn btn-danger w-100" href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            </div>
+        </div>
+        {% if weather %}
+            <div class="row mt-4">
+                <div class="col">
+                    <div class="p-3 border bg-light">
+                        <h5>Weather in {{ weather.location.name }}, {{ weather.location.region }}</h5>
+                        <p class="pb-0 fw-semibold">
+                            {{ weather.current.condition.text }},
+                            {{ weather.current.temp_f }}°F
+                        </p>
+                        <p class="pb-0 mb-0 small">
+                            Powered by <a href="https://www.weatherapi.com/" target="_blank">WeatherAPI.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="row mt-4">
+                <div class="col">
+                    <div class="p-3 border bg-light">
+                        <p class="pb-0 mb-0">Weather data is not available.</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

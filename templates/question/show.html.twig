@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}View Question{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center mb-4">View Question</h1>
+                <div class="p-3 w-100 bg-light border text-center">
+                    <h5 class="mb-3">Q: {{ question.description }}</h5>
+                    <a type="button" class="btn btn-primary mt-3 w-100 mb-3" href="{{ path('questions_edit', {'id': question.id}) }}">Edit Question</a>
+                </div>
+                <div class="text-center">
+                    {{ include('question/_delete_form.html.twig', {'question': question}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

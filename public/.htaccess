@@ -1,0 +1,17 @@
+# PREVENT SEARCH ENGINE LISTING
+Header set X-Robots-Tag "noindex, nofollow"
+
+# DENY ACCESS TO HTACCESS
+<Files .htaccess>
+Order allow,deny
+Deny from all
+</Files>
+
+# DISABLE DIRECTORY BROWSING
+Options All -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>

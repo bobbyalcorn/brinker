@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}View Questions{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">View Questions</h1>
+        <style>
+            .custom-table thead th {
+                background-color: #f8f9fa;
+            }
+            .custom-table tbody tr:hover {
+                background-color: #f1f1f1;
+            }
+        </style>
+        <a type="button" class="btn btn-secondary my-3 me-2" href="{{ path('dashboard') }}">Back to Dashboard</a>
+        <a href="{{ path('question_new') }}" class="btn btn-success btn-action my-3">Add New Question</a>
+        <div class="p-3 w-100 bg-light border">`
+            <div class="table-responsive mt-2">
+                <table class="table table-bordered table-striped table-hover custom-table w-100">
+                    <thead>
+                    <tr>
+                        <th scope="col">Description</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for question in questions %}
+                            <tr>
+                                <td>{{ question.description }}</td>
+                                <td>
+                                    <div class="d-flex justify-content-end">
+                                        <a href="{{ path('questions_show', {'id': question.id}) }}" class="btn btn-sm btn-primary btn-action me-2 fw-semibold">View</a>
+                                        <a href="{{ path('questions_edit', {'id': question.id}) }}" class="btn btn-sm btn-warning btn-action me-2 fw-semibold">Edit</a>
+                                        <a href="#" class="btn btn-sm btn-danger btn-action fw-semibold">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="2">no records found</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
